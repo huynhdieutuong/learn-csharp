@@ -2,7 +2,7 @@ namespace CS002
 {
     public class ForWhile
     {
-        static void Main()
+        static void Mainx()
         {
             int i;
             for (i = 0, System.Console.WriteLine("Start"); i < 5; i++, System.Console.WriteLine("Update i"))
