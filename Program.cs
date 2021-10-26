@@ -4,43 +4,24 @@ namespace CS002
 {
     class Program
     {
-        static void Mainx(string[] args)
+        static void Main(string[] args)
         {
-            Console.Write("Please enter number a: ");
-            int a = int.Parse(Console.ReadLine());
+            // Console.WriteLine("Sum: " + Methods.Sum(10, 20));
+            // Console.WriteLine("Sum (overload): " + Methods.Sum(10f, 20f));
 
-            Console.Write("Please enter number b: ");
-            int b = int.Parse(Console.ReadLine());
+            // Methods.Calculator();
 
-            Console.WriteLine("Please select a calculation: ");
-            Console.WriteLine("1. Sum");
-            Console.WriteLine("2. Sub");
-            Console.WriteLine("3. Mul");
-            Console.WriteLine("4. Div");
+            // Methods.PrintName("John", "Doe");
+            // Methods.PrintName("John");
+            // Methods.PrintName(lastName: "Doe");
 
-        L1:
-            char c = Console.ReadKey().KeyChar;
-            Console.WriteLine();
+            // Methods.PrintNumber();
 
-            switch (c)
-            {
-                case '1':
-                    Console.WriteLine($"Sum: {a + b}");
-                    break;
-                case '2':
-                    Console.WriteLine($"Sub: {a - b}");
-                    break;
-                case '3':
-                    Console.WriteLine($"Mul: {a * b}");
-                    break;
-                case '4':
-                    Console.WriteLine($"Div: {(float)a / b}");
-                    break;
-                default:
-                    System.Console.WriteLine("Please select another calculation:");
-                    goto L1;
-                    break;
-            }
+            // Class is reference without ref or out
+            Count count = new Count();
+            System.Console.WriteLine("Before: " + count.c);
+            Methods.Counter(count);
+            System.Console.WriteLine("After: " + count.c);
         }
     }
 }

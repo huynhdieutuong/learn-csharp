@@ -2,7 +2,7 @@ namespace CS002
 {
     public class Array
     {
-        static void Main()
+        static void Mainx()
         {
             /*
                     0 1 2
