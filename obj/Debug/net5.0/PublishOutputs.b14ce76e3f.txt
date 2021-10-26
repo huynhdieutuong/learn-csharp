@@ -1,5 +1,0 @@
-F:\Csharp\LearnCsharp2\CS002\bin\Debug\net5.0\publish\CS002.exe
-F:\Csharp\LearnCsharp2\CS002\bin\Debug\net5.0\publish\CS002.dll
-F:\Csharp\LearnCsharp2\CS002\bin\Debug\net5.0\publish\CS002.deps.json
-F:\Csharp\LearnCsharp2\CS002\bin\Debug\net5.0\publish\CS002.runtimeconfig.json
-F:\Csharp\LearnCsharp2\CS002\bin\Debug\net5.0\publish\CS002.pdb
