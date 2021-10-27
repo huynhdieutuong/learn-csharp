@@ -1,4 +1,7 @@
 using System;
+using static System.Console; // "using static" to use static method WriteLine
+using MyNameSpace;
+using ChangeNameSpace = MyNameSpace.ChildrenNameSpace; // Since duplicate Class1, changed namespace to ChangeNameSpace
 
 namespace CS002
 {
@@ -6,17 +9,9 @@ namespace CS002
     {
         static void Main(string[] args)
         {
-            Cat c = new Cat(5.3f)
-            {
-                Food = "Fish"
-            };
-            // c.ShowLegs();
-            c.Eat();
-            c.ShowInfo();
-
-            // ******* Animal can new Cat, but Cat can't new Animal *******
-            // Animal a = new Cat(3.5f);
-            // Cat d = new Animal(); // Can't
+            Class1.Hello();
+            ChangeNameSpace.Class1.Hello();
+            WriteLine("WriteLine without Console");
         }
     }
 }
