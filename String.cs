@@ -4,7 +4,7 @@ namespace CS002
 {
     public class String
     {
-        static void Main()
+        static void Mainx()
         {
             string hello = "Hi\r! \\How\t are\n \"you\"?";
             string breakLine = @"M: Hello, How are ""you""?
