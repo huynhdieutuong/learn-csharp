@@ -1,5 +1,5 @@
 using System;
-using static CS002.Struct;
+using static CS002.Enum;
 
 namespace CS002
 {
@@ -7,18 +7,33 @@ namespace CS002
     {
         static void Main(string[] args)
         {
-            Product product1;
-            product1.name = "Iphone";
-            product1.price = 1000;
-            // product1.GetInfo();
+            RATE rating = RATE.Excellent;
 
-            Product product2 = new Product("Nokia", 800);
-            // product2.GetInfo();
-            product2 = product1;
-            product2.name = "Iphone X";
+            // Convert to number
+            int number = (int)rating; // 50
+            System.Console.WriteLine(number);
 
-            System.Console.WriteLine(product1.Info);
-            System.Console.WriteLine(product2.Info);
+            // Convert to rate
+            RATE rating2 = (RATE)(30); // Good
+            System.Console.WriteLine(rating2);
+
+            switch (rating)
+            {
+                case RATE.Poor:
+                    System.Console.WriteLine("Poor type");
+                    break;
+                case RATE.Average:
+                    System.Console.WriteLine("Average type");
+                    break;
+                case RATE.Good:
+                    System.Console.WriteLine("Good type");
+                    break;
+                case RATE.Excellent:
+                    System.Console.WriteLine("Excellent type");
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
