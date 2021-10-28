@@ -70,7 +70,7 @@ namespace _EventHandler
 
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             Console.CancelKeyPress += (sender, e) => // 4. When Ctrl C, this EventHandler will call
             {
