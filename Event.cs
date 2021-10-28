@@ -51,7 +51,7 @@ namespace Event
 
     class Program
     {
-        static void Main()
+        static void Mainx()
         {
             // publisher
             UserInput userInput = new UserInput();
