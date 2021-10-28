@@ -31,7 +31,7 @@ namespace Delegate
             int sum = a + b;
             log?.Invoke($"Sum: {sum}");
         }
-        static void Main()
+        static void Mainx()
         {
             ShowLog log = null; // 0. Delete is reference type, can declare null
             log = Info; // 2. (1) the same "void", so can log = Info
