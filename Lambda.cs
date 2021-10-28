@@ -7,7 +7,7 @@ namespace Lambda
     // Use with Delegate
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             // 1) (int a, int b) => a + b;
             Action<string> log;
