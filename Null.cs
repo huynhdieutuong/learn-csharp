@@ -6,7 +6,7 @@ namespace CS002
     }
     public class Null
     {
-        static void Main()
+        static void Mainx()
         {
             // Null - use for Reference Variable (object, dynamic, string)
             Abc a = null; // Throw error: Object reference not set to an instance of an object

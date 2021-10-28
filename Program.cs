@@ -1,13 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
+using VirtualMethod;
 
 namespace CS002
 {
     class Program
     {
-        static void Mainx(string[] args)
+        static void Main(string[] args)
         {
-
+            Iphone i = new Iphone();
+            i.Test();
         }
     }
 }
