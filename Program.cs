@@ -5,14 +5,9 @@ namespace CS002
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Mainx(string[] args)
         {
-            AnonymousType.PrintInfo();
 
-            System.Console.WriteLine("==========");
-
-            Student stu = new Student();
-            DynamicType.PrintInfo(stu);
         }
     }
 }
