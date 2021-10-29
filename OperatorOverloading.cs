@@ -23,7 +23,7 @@ namespace OperatorOverloading
     }
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             Vector v1 = new Vector(5, 8);
             Vector v2 = new Vector(1, 1);
