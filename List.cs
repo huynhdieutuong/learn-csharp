@@ -23,7 +23,7 @@ namespace _List
             }
             Console.WriteLine();
         }
-        static void Main()
+        static void Mainx()
         {
             List<int> list1 = new List<int>();
             list1.Add(1); // 1.1 Add 1 to list
