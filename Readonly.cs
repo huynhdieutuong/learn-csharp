@@ -11,7 +11,7 @@ namespace Readonly
     }
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             Student s1 = new Student();
             // s.name = "ABC"; // 1. Can not set name, since name is readonly
