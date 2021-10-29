@@ -5,7 +5,7 @@ namespace _Exception
 {
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             int a = 5;
             int b = 1;
