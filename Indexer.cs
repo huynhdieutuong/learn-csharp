@@ -48,7 +48,7 @@ namespace Indexer
     }
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             Vector v = new Vector(5, 8);
             Console.WriteLine($"x = {v[0]}, y = {v[1]}");
