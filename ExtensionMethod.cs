@@ -18,7 +18,7 @@ namespace ExtensionMethod
         //     Console.ForegroundColor = color;
         //     Console.WriteLine(s);
         // }
-        static void Main()
+        static void Mainx()
         {
             string hello = "Hello";
             // Print(hello, ConsoleColor.DarkGreen);
