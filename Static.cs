@@ -17,7 +17,7 @@ namespace Static
     }
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             CountNumber c1 = new CountNumber();
             CountNumber c2 = new CountNumber();
