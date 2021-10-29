@@ -17,7 +17,7 @@ namespace SortedList
             Console.WriteLine();
         }
 
-        static void Main()
+        static void Mainx()
         {
             // 1.1 SortedList to optimize accession for List by Keys
             SortedList<string, Product> products = new SortedList<string, Product>();
