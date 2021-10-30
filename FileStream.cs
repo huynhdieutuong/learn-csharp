@@ -50,7 +50,7 @@ namespace _FileStream
     }
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             string path = "data2.dat";
             using var stream = new FileStream(path: path, FileMode.OpenOrCreate);
