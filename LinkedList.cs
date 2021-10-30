@@ -13,7 +13,7 @@ namespace LinkedList
                 Console.WriteLine(ls);
             }
         }
-        static void Main()
+        static void Mainx()
         {
             LinkedList<string> lessons = new LinkedList<string>();
 
