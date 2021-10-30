@@ -71,7 +71,7 @@ namespace Asynchronous
             System.Console.WriteLine("T3 finished");
             // return t3;
         }
-        static async Task Main() // 3.3 change "void" to "async Task"
+        static async Task Mainx() // 3.3 change "void" to "async Task"
         // static void Main()
         {
             // Using Task to handle Asyncronous
