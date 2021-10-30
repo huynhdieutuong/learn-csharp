@@ -13,7 +13,7 @@ namespace Queue
                 Console.WriteLine(profile + " ");
             }
         }
-        static void Main()
+        static void Mainx()
         {
             Queue<string> profiles = new Queue<string>();
             // Add Queue
