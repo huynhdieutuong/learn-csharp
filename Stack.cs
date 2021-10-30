@@ -15,7 +15,7 @@ namespace Stack
                 Console.WriteLine(item);
             }
         }
-        static void Main()
+        static void Mainx()
         {
             Stack<string> products = new Stack<string>();
             products.Push("Product 1"); // Add
