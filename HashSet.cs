@@ -14,7 +14,7 @@ namespace HashSet
             }
             System.Console.WriteLine();
         }
-        static void Main()
+        static void Mainx()
         {
             HashSet<int> set1 = new HashSet<int>() { 1, 2, 3, 4, 5, 6, 7 };
             HashSet<int> set2 = new HashSet<int>() { 9, 10, 1, 2, 3, 14 };
