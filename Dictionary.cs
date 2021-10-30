@@ -6,7 +6,7 @@ namespace Dictionary
 {
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             // 1. Init 2 numbers
             Dictionary<string, int> numbers = new Dictionary<string, int>()
