@@ -5,7 +5,7 @@ namespace _File
 {
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             // ************ 1. DriveInfo ************
             // 1.1 Get drive info
