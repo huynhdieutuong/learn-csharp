@@ -75,7 +75,7 @@ namespace Asynchronous1
             string content = await res.Content.ReadAsStringAsync();
             return content;
         }
-        static async Task Main()
+        static async Task Mainx()
         {
             // Task<T> want have return value (type T)
 
