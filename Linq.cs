@@ -28,7 +28,7 @@ namespace Linq // Language Integrated Query
             public string Name { get; set; }
             public int ID { get; set; }
         }
-        static void Main()
+        static void Mainx()
         {
             var brands = new List<Brand>() {
                 new Brand{ID = 1, Name = "Brand A"},
