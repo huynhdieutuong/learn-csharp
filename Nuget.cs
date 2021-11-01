@@ -20,7 +20,7 @@ namespace Nuget
         // ***** 2. reference package from another project
 
         // ***** 3. publish & push package to nuget
-        static void Main()
+        static void Mainx()
         {
             // Product product = new Product();
             // product.Name = "Apple";
