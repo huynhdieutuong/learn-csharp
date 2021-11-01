@@ -6,7 +6,7 @@ namespace _Type
 {
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             // 1. Get type of a type -> typeof(type)
             // Type t1 = typeof(int);
