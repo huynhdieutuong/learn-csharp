@@ -70,7 +70,7 @@ namespace DependencyInjection2
     }
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             // I. Basic
             // 1. DI Container : ServiceCollection
