@@ -37,7 +37,7 @@ namespace DependencyInjection1
     }
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             IHorn horn = new Horn2 { Level = 2 };
             Car car = new Car(horn);
