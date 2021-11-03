@@ -10,7 +10,7 @@ namespace _Attribute
 {
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             User user = new User()
             {
