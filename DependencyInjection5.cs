@@ -25,7 +25,7 @@ namespace DependencyInjection5
 
             public void PrintData() => System.Console.WriteLine($"{Data1} / {Data2}");
         }
-        static void Main()
+        static void Mainx()
         {
             // 1. Get config in json file
             IConfigurationRoot configurationRoot;
