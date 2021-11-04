@@ -1,0 +1,10 @@
+{
+  "section1": {
+    "key1": "value1",
+    "key2": 2543
+  },
+  "MyServiceOptions": {
+    "Data1": "Dependency Injection",
+    "Data2": 2022
+  }
+}

@@ -23,7 +23,7 @@ namespace DependencyInjection4
 
             public void PrintData() => System.Console.WriteLine($"{Data1} / {Data2}");
         }
-        static void Main()
+        static void Mainx()
         {
             var services = new ServiceCollection();
             services.AddSingleton<MyService>(); // 0. How to assign value to Data1, Data2 ? use IOptions (create class MyServiceOptions)
