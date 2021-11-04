@@ -91,7 +91,7 @@ namespace DependencyInjection3
             );
             return b2;
         }
-        static void Main()
+        static void Mainx()
         {
             var services = new ServiceCollection();
             services.AddSingleton<ClassA, ClassA>();
