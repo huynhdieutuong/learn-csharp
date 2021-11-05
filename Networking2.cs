@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -110,9 +112,10 @@ namespace Networking2
             // await DownloadStream(url, "2.png");
 
             // ======================= SendAsync ===================
+            string url = "https://postman-echo.com/post";
             var httpRequestMessage = new HttpRequestMessage();
             httpRequestMessage.Method = HttpMethod.Post;
-            httpRequestMessage.RequestUri = new Uri("https://postman-echo.com/post");
+            httpRequestMessage.RequestUri = new Uri(url);
             httpRequestMessage.Headers.Add("User-Agent", "Mozilla/5.0");
 
             // 1. Payload List to Json = { key1: value1, key2: [value2-1, value2-2] }
@@ -140,8 +143,19 @@ namespace Networking2
             // Add payload
             httpRequestMessage.Content = content;
 
-            using var httpClient = new HttpClient();
+            // Setup SocketsHttpHandler. If not setup, HttpClient get default handler.
+            var cookies = new CookieContainer();
+            using var handler = new SocketsHttpHandler();
+            handler.AllowAutoRedirect = true;
+            handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            handler.UseCookies = true;
+            handler.CookieContainer = cookies;
+
+            using var httpClient = new HttpClient(handler);
             var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+
+            cookies.GetCookies(new Uri(url)).ToList().ForEach(c => System.Console.WriteLine($"{c.Name} : {c.Value}"));
+
             ShowHeaders(httpResponseMessage.Headers);
             var html = await httpResponseMessage.Content.ReadAsStringAsync();
             System.Console.WriteLine(html);
