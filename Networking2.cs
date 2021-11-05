@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -105,8 +106,45 @@ namespace Networking2
             // stream.Write(bytes, 0, bytes.Length);
 
             // 3. Download file sync
-            string url = "https://raw.githubusercontent.com/xuanthulabnet/learn-cs-netcore/master/imgs/di-02.png";
-            await DownloadStream(url, "2.png");
+            // string url = "https://raw.githubusercontent.com/xuanthulabnet/learn-cs-netcore/master/imgs/di-02.png";
+            // await DownloadStream(url, "2.png");
+
+            // ======================= SendAsync ===================
+            var httpRequestMessage = new HttpRequestMessage();
+            httpRequestMessage.Method = HttpMethod.Post;
+            httpRequestMessage.RequestUri = new Uri("https://postman-echo.com/post");
+            httpRequestMessage.Headers.Add("User-Agent", "Mozilla/5.0");
+
+            // 1. Payload List to Json = { key1: value1, key2: [value2-1, value2-2] }
+            // var parameters = new List<KeyValuePair<string, string>>();
+            // parameters.Add(new KeyValuePair<string, string>("key1", "value1"));
+            // parameters.Add(new KeyValuePair<string, string>("key2", "value2-1"));
+            // parameters.Add(new KeyValuePair<string, string>("key2", "value2-2"));
+            // var content = new FormUrlEncodedContent(parameters);
+
+            // 2. Payload in Json
+            // string data = @"{
+            //     ""key1"": ""value1"",
+            //     ""key2"": [""value2-1"", ""value-2-2""]
+            // }";
+            // System.Console.WriteLine(data);
+            // var content = new StringContent(data, Encoding.UTF8, "application/json");
+
+            // 3. Payload: Upload file + Json
+            var content = new MultipartFormDataContent();
+            Stream fileStream = File.OpenRead("1.txt");
+            var fileUpload = new StreamContent(fileStream);
+            content.Add(fileUpload, "fileupload", "abc.xyz");
+            content.Add(new StringContent("value1"), "key1");
+
+            // Add payload
+            httpRequestMessage.Content = content;
+
+            using var httpClient = new HttpClient();
+            var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+            ShowHeaders(httpResponseMessage.Headers);
+            var html = await httpResponseMessage.Content.ReadAsStringAsync();
+            System.Console.WriteLine(html);
         }
     }
 }
