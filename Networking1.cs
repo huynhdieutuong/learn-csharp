@@ -7,7 +7,7 @@ namespace Networking1
 {
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             // 1. Uri class
             string url = "https://github.com/huynhdieutuong/learn-csharp?id=123&type=great#section";
