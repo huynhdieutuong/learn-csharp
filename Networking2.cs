@@ -143,7 +143,7 @@ namespace Networking2
                 System.Console.WriteLine(e.Message);
             }
         }
-        static async Task Main()
+        static async Task Mainx()
         {
             // 1. Get html
             // var url = "https://github.com/huynhdieutuong";
