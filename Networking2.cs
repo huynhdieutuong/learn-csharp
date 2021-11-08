@@ -4,10 +4,60 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Networking2
 {
+    public class MyHttpClientHandler : HttpClientHandler
+    {
+        public MyHttpClientHandler(CookieContainer cookie_container)
+        {
+            CookieContainer = cookie_container;
+            AllowAutoRedirect = false;
+            AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            UseCookies = true;
+        }
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            System.Console.WriteLine("Start connect " + request.RequestUri.ToString());
+            // Access server
+            var response = await base.SendAsync(request, cancellationToken);
+            System.Console.WriteLine("Complete load data");
+            return response;
+        }
+    }
+    public class ChangeUri : DelegatingHandler
+    {
+        public ChangeUri(HttpMessageHandler innerHandler) : base(innerHandler) { }
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var host = request.RequestUri.Host.ToLower();
+            System.Console.WriteLine($"Check in ChangeUri - {host}");
+            if (host.Contains("google.com"))
+            {
+                request.RequestUri = new Uri("https://github.com/"); // Change request url to github.com
+            }
+            return base.SendAsync(request, cancellationToken); // Transfer to base (innerHandler)
+        }
+    }
+    public class DenyAccessFacebook : DelegatingHandler
+    {
+        public DenyAccessFacebook(HttpMessageHandler innerHandler) : base(innerHandler) { }
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var host = request.RequestUri.Host.ToLower();
+            System.Console.WriteLine($"Check in DenyAccessFacebook - {host}");
+            if (host.Contains("facebook.com"))
+            {
+                var response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new ByteArrayContent(Encoding.UTF8.GetBytes("Can not access"));
+                return await Task.FromResult<HttpResponseMessage>(response);
+            }
+            return await base.SendAsync(request, cancellationToken); // Transfer to base (innerHandler)
+        }
+    }
     public class Program
     {
         static void ShowHeaders(HttpResponseHeaders headers)
@@ -112,7 +162,7 @@ namespace Networking2
             // await DownloadStream(url, "2.png");
 
             // ======================= SendAsync ===================
-            string url = "https://postman-echo.com/post";
+            string url = "https://facebook.com";
             var httpRequestMessage = new HttpRequestMessage();
             httpRequestMessage.Method = HttpMethod.Post;
             httpRequestMessage.RequestUri = new Uri(url);
@@ -144,17 +194,23 @@ namespace Networking2
             httpRequestMessage.Content = content;
 
             // Setup SocketsHttpHandler. If not setup, HttpClient get default handler.
-            var cookies = new CookieContainer();
-            using var handler = new SocketsHttpHandler();
-            handler.AllowAutoRedirect = true;
-            handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-            handler.UseCookies = true;
-            handler.CookieContainer = cookies;
+            // var cookies = new CookieContainer();
+            // using var handler = new SocketsHttpHandler();
+            // handler.AllowAutoRedirect = true;
+            // handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            // handler.UseCookies = true;
+            // handler.CookieContainer = cookies;
 
-            using var httpClient = new HttpClient(handler);
+            // Create handler chain
+            var cookies = new CookieContainer();
+            var bottomHandler = new MyHttpClientHandler(cookies);
+            var changeUriHandler = new ChangeUri(bottomHandler);
+            var denyAccessFacebookHandler = new DenyAccessFacebook(changeUriHandler);
+
+            using var httpClient = new HttpClient(denyAccessFacebookHandler);
             var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
 
-            cookies.GetCookies(new Uri(url)).ToList().ForEach(c => System.Console.WriteLine($"{c.Name} : {c.Value}"));
+            // cookies.GetCookies(new Uri(url)).ToList().ForEach(c => System.Console.WriteLine($"{c.Name} : {c.Value}"));
 
             ShowHeaders(httpResponseMessage.Headers);
             var html = await httpResponseMessage.Content.ReadAsStringAsync();
