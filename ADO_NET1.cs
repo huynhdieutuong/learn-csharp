@@ -6,7 +6,7 @@ namespace ADO_NET1
 {
     public class Program
     {
-        static void Main()
+        static void Mainx()
         {
             // 1.1 Manual
             // string sqlconnectStr = "Server=TUONG\\SQLEXPRESS;Database=xtlab;Trusted_Connection=True;";
