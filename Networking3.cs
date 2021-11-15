@@ -96,7 +96,7 @@ namespace Networking3
                 outputStream.Close();
             }
         }
-        static async Task Main()
+        static async Task Mainx()
         {
             var server = new MyHttpServer(new string[] { "http://127.0.0.1:8080/" });
             await server.Start();
